@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="styl.css">
+</head>
+<body>
+    <header>
+        <h2>Chat</h2>
+    </header>
+    <aside>
+        <h3>Chaty</h3>
+        <ul>
+            <li>Ogólny</li>
+            <li>Tematyczne
+                <ol>
+                    <li>Turystyczny</li>
+                    <li>Żeglarski</li>
+                    <li>Filatelistyczny</li>
+                    <li>Hodowla zwierzątek domowych</li>
+                </ol>
+            </li>
+        </ul>
+        <h3>Uczestnicy</h3>
+        <p>Jolanta Nowak</p>
+        <img src="pliki2/Jolka.jpg" alt="Jolanta Nowak">
+        <p>Krzysztof Łukasiński</p>
+        <img src="pliki2/Krzysiek.jpg" alt="Krzysztof Łukasiński">
+    </aside>
+    <main>
+        <div id="blok-chatu">
+            <div class="blok-jolanta">
+                <img src="pliki2/Jolka.jpg" alt="Jolanta Nowak">
+                <p>Cześć idziesz jutro do kina?</p>
+            </div>
+            <div class="blok-krzysztof">
+                <img src="pliki2/Krzysiek.jpg" alt="Krzysztof Łukasiński">
+                <p>Tak! A ty?</p>
+            </div>
+        </div>
+        <span>Wpisz wiadomość</span>
+        <input type="text" id="wiadomosc">
+        <input type="button" value="Wyślij" onclick="wyslijWiadomosc()">
+        <br>
+        <input type="button" value="Generuj losową odpowiedź" onclick="generujLosowaOdpowiedz()">
+    </main>
+    
+    <footer>
+        <h5>Chat wykonał: barmc</h5>
+    </footer>
+</body>
+
+<script>
+    function wyslijWiadomosc(){
+        var wiadomosc = document.getElementById("wiadomosc").value;
+        const blokChatu = document.getElementById("blok-chatu");
+        const div = document.createElement("div");
+        div.classList.add("blok-jolanta");
+        const image = document.createElement("img");
+        image.src = "pliki2/Jolka.jpg";
+        image.alt = "Jolanta Nowak";
+        const paragraph = document.createElement("p");
+        paragraph.innerText = wiadomosc;
+        div.appendChild(image);
+        div.appendChild(paragraph);    
+        blokChatu.appendChild(div);
+        div.scrollIntoView();   
+    }
+    function generujLosowaOdpowiedz(){
+        const odpowiedzi = [
+            "Świetnie!",
+    "Kto gra główną rolę?",
+    "Lubisz filmy Tego reżysera?",
+    "Będę 10 minut wcześniej",
+    "Może kupimy sobie popcorn?",
+    "Ja wolę Colę",
+    "Zaproszę jeszcze Grześka",
+    "Tydzień temu też byłem w kinie na Diunie",
+    "Ja funduję bilety"
+        ]
+        const wiadomosc = odpowiedzi[Math.floor(Math.random() * odpowiedzi.length)];
+        const blokChatu = document.getElementById("blok-chatu");
+        const div = document.createElement("div");
+        div.classList.add("blok-krzysztof");
+        const image = document.createElement("img");
+        image.src = "pliki2/Krzysiek.jpg";
+        image.alt = "Krzysztof Łukasiński";
+        const paragraph = document.createElement("p");
+        paragraph.innerText = wiadomosc;
+        div.appendChild(image);
+        div.appendChild(paragraph);    
+        blokChatu.appendChild(div);
+        div.scrollIntoView();
+    }
+</script>
+</html>
